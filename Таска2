@@ -1,0 +1,21 @@
+Паттерн, который позволяет пользователям изменять настройки приложения через пользовательский интерфейс, часто называется **Паттерн Команда** (Command). Этот паттерн позволяет инкапсулировать запрос на выполнение определённого действия в виде объекта. Это обеспечивает гибкость в проектировании пользовательского интерфейса, позволяя параметризовать объекты с помощью действий и поддерживать очередь запросов, логирование или отмену операций.
+
+Также может быть использован **Паттерн Наблюдатель** (Observer), который позволяет объектам получать уведомления об изменении состояния других объектов. В контексте пользовательского интерфейса, это может быть полезно для обновления элементов интерфейса в ответ на изменения в настройках приложения.
+
+Если же речь идет о паттерне, который позволяет создавать различные конфигурации объектов, то это может быть **Паттерн Строитель** (Builder) или **Паттерн Фабричный метод** (Factory Method), которые предоставляют способы создания сложных объектов, позволяя пользователям выбирать конкретные настройки.
+
+В зависимости от контекста и требований приложения, может быть использован один из этих паттернов или их комбинация для достижения необходимой гибкости и удобства настройки приложения пользователями. Если вам нужна более детальная информация о каком-либо из этих паттернов, пожалуйста, дайте мне знать!
+
+Источник: беседа с Bing, 11.04.2024
+(1) undefined. https://refactoring.guru/ru/design-patterns/adapter.
+(2) undefined. https://refactoring.guru/ru/design-patterns/csharp.
+(3) undefined. https://support.microsoft.com/ru-ru/windows/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D0%BE%D0%B2-%D1%80%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B9-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9-%D0%B2-windows-f21b5c60-e996-4ee4-c2cf-b4a90c0bef9b.
+(4) undefined. https://habr.com/ru/companies/piter/articles/275633/.
+(5) undefined. https://refactoring.guru/ru/design-patterns/strategy/java/example.
+(6) undefined. https://habr.com/ru/articles/350386/.
+(7) undefined. https://highload.today/blogs/strategy-pattern/.
+(8) undefined. https://refactoring.guru/ru/design-patterns/java.
+(9) undefined. https://fb.ru/article/513759/2023-pattern-strategiya-opisanie-osobennosti-i-primeryi.
+(10) undefined. https://refactoring.guru/ru/design-patterns/strategy.
+(11) undefined. http://cpp-reference.ru/patterns/behavioral-patterns/strategy/.
+(12) undefined. https://bool.dev/blog/detail/pattern-strategiya-strategy.
