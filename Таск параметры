@@ -1,0 +1,65 @@
+public interface TaskSchedulerConfig {
+    String getCronExpression();
+    void setCronExpression(String cronExpression);
+}
+@Component
+public class DynamicTaskSchedulerConfig implements TaskSchedulerConfig {
+
+    private volatile String cronExpression = "0 * * * * *"; // значение по умолчанию
+
+    @Override
+    public String getCronExpression() {
+        return cronExpression;
+    }
+
+    @Override
+    public void setCronExpression(String cronExpression) {
+        this.cronExpression = cronExpression;
+    }
+}
+@Component
+public class DynamicScheduledTask {
+
+    private final TaskScheduler scheduler;
+    private final DynamicTaskSchedulerConfig config;
+    private ScheduledFuture<?> futureTask;
+
+    @Autowired
+    public DynamicScheduledTask(TaskScheduler scheduler, DynamicTaskSchedulerConfig config) {
+        this.scheduler = scheduler;
+        this.config = config;
+    }
+
+    @PostConstruct
+    public void scheduleTask() {
+        futureTask = scheduler.schedule(this::task, new CronTrigger(config.getCronExpression()));
+    }
+
+    public void task() {
+        // Задача, которая будет выполняться согласно cron-выражению
+    }
+
+    public void updateCronExpression(String newCronExpression) {
+        if (futureTask != null) {
+            futureTask.cancel(true);
+        }
+        config.setCronExpression(newCronExpression);
+        futureTask = scheduler.schedule(this::task, new CronTrigger(config.getCronExpression()));
+    }
+}
+@RestController
+@RequestMapping("/scheduler")
+public class SchedulerController {
+
+    private final DynamicScheduledTask scheduledTask;
+
+    public SchedulerController(DynamicScheduledTask scheduledTask) {
+        this.scheduledTask = scheduledTask;
+    }
+
+    @PostMapping("/update-cron")
+    public ResponseEntity<?> updateCron(@RequestParam String cron) {
+        scheduledTask.updateCronExpression(cron);
+        return ResponseEntity.ok("Cron-выражение обновлено");
+    }
+}
